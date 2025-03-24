@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+   <input type="text" placeholder="enter a number" id="userInput_1">
+   <input type="text" placeholder="enter a number" id="userInput_2">
+   <button id="sum" onclick="addition();">Calculate Sum</button>
+   <div id="output"></div>
+
+    <script>
+        function addition(){
+            let sum = 0;
+            let a = parseInt(document.getElementById("userInput_1").value);
+            let b = parseInt(document.getElementById("userInput_2").value);
+            // for(let i = a; i <= b; i++){
+            //     sum += i;
+            // }
+            let i=a;
+            do{
+                sum += i;
+                i++;
+            }while(i<=b)
+            document.getElementById("output").innerHTML = sum;
+        }
+    </script>
+</body>
+</html>
+
+
+
+

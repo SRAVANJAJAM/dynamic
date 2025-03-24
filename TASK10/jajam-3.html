@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function generate() {
+            let min = parseInt(document.getElementById("minRange").value);
+            let max = parseInt(document.getElementById("maxRange").value);
+
+            let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById("result").innerText = "Random number is: " + randomNum;
+        }
+        setTimeout(() => {
+            document.getElementById("content").style.display = 'none';
+        }, 5000);
+
+        // Show the content again after 15 seconds (10 seconds after the hide)
+        setTimeout(() => {
+            document.getElementById("content").style.display = 'block';
+        }, 16000);
+
+    </script>
+</head>\
+
+<body>
+    <div id="content">
+    <center>
+    <h2>Random Number Generator</h2>
+    <input type="number" id="minRange" placeholder="Min Range">
+    <input type="number" id="maxRange" placeholder="Max Range">
+    <br>
+    <br>
+    <button onclick="generate()">Generate Random Number</button>
+    <br>
+    <br>
+    <div id="result">Random number is: </div>
+    </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sravan Kumar Jajam's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .sidebar .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar .logo i {
+            font-size: 28px;
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        .sidebar .logo span {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .sidebar .nav-links {
+            list-style: none;
+        }
+
+        .sidebar .nav-links li {
+            margin: 15px 0;
+        }
+
+        .sidebar .nav-links li a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar .nav-links li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .nav-links li a i {
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* Task Grid */
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .task-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .task-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .task-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .task-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .task-card a:hover {
+            color: #2575fc;
+        }
+
+        /* Task Viewer */
+        .task-viewer {
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-viewer iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-rocket"></i>
+            <span>Sravan's Portfolio</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-folder"></i><span>Tasks</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-user"></i><span>About</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1>Welcome to Sravan Kumar Jajam's Portfolio</h1>
+        </div>
+
+        <!-- Task Grid -->
+        <div class="tasks-grid" id="tasksGrid">
+            <!-- Tasks will be dynamically loaded here -->
+        </div>
+
+        <!-- Task Viewer -->
+        <div class="task-viewer">
+            <iframe id="taskViewer" src="" title="Task Viewer"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // List of Tasks
+        const tasks = [
+        { id: "1", title: "Basic HTML Styling", file: "TASK1/sravan_index.html" },
+        { id: "2", title: "Css Hover", file: "TASK2/index.html" },
+        { id: "3", title: "TASK3", file: "TASK3/jajam.html" },
+        { id: "4", title: "TASK4", file: "TASK4/sravankumar.html" },
+        { id: "5", title: "TASK5", file: "TASK5/jsravan.html" },
+        { id: "6", title: "TASK6", file: "TASK6/JAJAM.HTML" },
+        { id: "7", title: "TASK7", file: "TASK7/task2_Index.html" },
+        { id: "8", title: "TASK8", file: "TASK8/jajam-2.html" },
+        { id: "9", title: "TASK9", file: "TASK9/jajam_do.html" },
+        { id: "10", title: "TASK10", file: "TASK10/AJJU.HTML" },
+        { id: "11", title: "TASK11", file: "TASK11/SJAJAM.html" },
+        { id: "12", title: "TASK12", file: "TASK12/SRAVAN.html" },
+        { id: "13", title: "TASK13", file: "TASK13/SRAVAN1.HTML" },
+        ];
+
+        const tasksGrid = document.getElementById('tasksGrid');
+        const taskViewer = document.getElementById('taskViewer');
+
+        // Dynamically Load Tasks
+        tasks.forEach((task) => {
+            const taskCard = document.createElement('div');
+            taskCard.classList.add('task-card');
+            taskCard.innerHTML = `
+                <h3>${task.title}</h3>
+                <p>Click below to view this task.</p>
+                <a href="#" onclick="loadTask('${task.file}')">View Task</a>
+            `;
+            tasksGrid.appendChild(taskCard);
+        });
+
+        // Load Task into Viewer
+        function loadTask(file) {
+            taskViewer.src = file;
+        }
+
+        // Load the first task by default
+        if (tasks.length > 0) {
+            loadTask(tasks[0].file);
+        }
+    </script>
+</body>
+</html>

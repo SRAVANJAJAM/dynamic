@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JavaScript Statements</h1>
+
+    <h2>Insert / Update Information</h2>
+    <form id="personForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" value="SRAVAN"><br><br>
+
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" value="JAJAM"><br><br>
+
+        <label for="student_id">Student ID:</label><br>
+        <input type="text" id="student_id" value="S00443239"><br><br>
+
+        <label for="department">Department:</label><br>
+        <input type="text" id="department" value="COMPUTER SCIENCE"><br><br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="text" id="dob" value="04082001"><br><br>
+
+        <label for="place">Place:</label><br>
+        <input type="text" id="place" value="NALGONDA"><br><br>
+
+        <button type="button" onclick="updatePersonInfo()">Insert Info</button>
+    </form>
+
+    <h3>Person Information:</h3>
+    <div id="sravan"></div>
+    
+    <script>
+        const person = {
+            name: "SRAVAN",
+            surname: "JAJAM",
+            student_id: "S00443239",
+            department: "COMPUTER SCIENCE",
+            dob: "04082001",
+            place: "NALGONDA",
+            description: function(){
+                return "MY NAME IS " + this.name + " AND MY SURNAME " + this.surname + 
+                " AND I WAS BORN IN THE PLACE " + this.place + ". AND MY DATE OF BIRTH IS " + 
+                this.dob + " I COMPLETED MY GRADUATION IN " + this.department + 
+                " AND MY STUDENT ID IS " + this.student_id;
+            }
+        };
+
+        function show_person_info(){
+            document.getElementById("sravan").innerHTML = person.description();
+        }
+
+        function updatePersonInfo() {
+            // Get the values from the form and update the person object
+            person.name = document.getElementById("name").value;
+            person.surname = document.getElementById("surname").value;
+            person.student_id = document.getElementById("student_id").value;
+            person.department = document.getElementById("department").value;
+            person.dob = document.getElementById("dob").value;
+            person.place = document.getElementById("place").value;
+
+            // Display the updated information
+            show_person_info();
+        }
+
+        // Initially show person information
+        show_person_info();
+    </script>
+</body>
+</html>

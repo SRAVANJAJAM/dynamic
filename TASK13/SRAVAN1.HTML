@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+            width: 250px;
+        }
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: left;
+            display: inline-block;
+        }
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Your Information</h2>
+    <input type="text" id="name" placeholder="MY NAME IS">
+    <input type="email" id="department" placeholder="Enter Email">
+    <input type="text" id="dob" placeholder="AND MY DATE OF BIRTH IS">
+    <input type="text" id="place" placeholder="AND I WAS BORN IN THE PLACE">
+    <input type="text" id="student_id" placeholder="AND MY STUDENT ID IS">
+    <input type="text" id="surname" placeholder="AND MY SURNAME">
+    
+    <br>
+    <button onclick="saveInfo()">Save Info</button>
+    <button onclick="displayInfo()">Show All Entries</button>
+    <button onclick="clearFields()">Clear Inputs</button>
+    <button onclick="clearDisplay()">Clear Display</button>
+
+    <h2>Search User</h2>
+    <input type="text" id="searchName" placeholder="Enter Name to Search">
+    <button onclick="searchUser()">Search</button>
+
+    <div id="output"></div>
+
+    <script>
+        // Constructor to create a user object
+        function User(name, surname, student_id, department, dob, place) {
+            this.name = name;
+            this.surname = surname;
+            this.student_id = student_id;
+            this.department = department;
+            this.dob = dob;
+            this.place = place;
+        }
+
+        // Array to store users
+        let users = [];
+
+        // Function to save user information
+        function saveInfo() {
+            let name = document.getElementById("name").value;
+            let surname = document.getElementById("surname").value;
+            let student_id = document.getElementById("student_id").value;
+            let department = document.getElementById("department").value;
+            let dob = document.getElementById("dob").value;
+            let place = document.getElementById("place").value;
+
+            if (name && surname && student_id && department && dob && place) {
+                let newUser = new User(name, surname, student_id, department, dob, place);
+                users.push(newUser);
+                alert("Information Saved!");
+                clearFields();
+            } else {
+                alert("Please fill all fields before saving.");
+            }
+        }
+
+        // Function to display all user information
+        function displayInfo() {
+            let outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<h3>All Entries:</h3>";
+
+            if (users.length === 0) {
+                outputDiv.innerHTML += "<p>No information available.</p>";
+                return;
+            }
+
+            users.forEach((user, index) => {
+                outputDiv.innerHTML += `
+                    <p><strong>Entry ${index + 1}</strong></p>
+                    <p>Full Name: ${user.name} ${user.surname}</p>
+                    <p>Email: ${user.department}</p>
+                    <p>Date of Birth: ${user.dob}</p>
+                    <p>Place: ${user.place}</p>
+                    <p>Student ID: ${user.student_id}</p>
+                    <hr>
+                `;
+            });
+        }
+
+        // Function to search for a user by name
+        function searchUser() {
+            let searchName = document.getElementById("searchName").value.trim().toLowerCase();
+            let outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<h3>Search Result:</h3>";
+
+            if (searchName === "") {
+                outputDiv.innerHTML += "<p>Please enter a name to search.</p>";
+                return;
+            }
+
+            let foundUser = users.find(user => user.name.toLowerCase() === searchName);
+
+            if (foundUser) {
+                outputDiv.innerHTML += `
+                    <p><strong>Full Name:</strong> ${foundUser.name} ${foundUser.surname}</p>
+                    <p><strong>Email:</strong> ${foundUser.department}</p>
+                    <p><strong>Date of Birth:</strong> ${foundUser.dob}</p>
+                    <p><strong>Place:</strong> ${foundUser.place}</p>
+                    <p><strong>Student ID:</strong> ${foundUser.student_id}</p>
+                    <hr>
+                `;
+            } else {
+                outputDiv.innerHTML += "<p>No user found with that name.</p>";
+            }
+        }
+
+        // Function to clear the input fields
+        function clearFields() {
+            document.getElementById("name").value = "";
+            document.getElementById("surname").value = "";
+            document.getElementById("student_id").value = "";
+            document.getElementById("department").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("place").value = "";
+        }
+
+        // Function to clear the displayed output
+        function clearDisplay() {
+            document.getElementById("output").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>
